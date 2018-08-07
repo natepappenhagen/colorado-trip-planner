@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Auth from '../Auth/Auth'
+const auth = new Auth();
 
 
 class CreateTrip extends Component {
@@ -7,7 +9,8 @@ class CreateTrip extends Component {
 
     this.state = {
       title: '',
-      description: ''
+      description: '',
+      userGivenName: auth.getProfile().given_name
     }
   }
   updateTrip = (e) => {

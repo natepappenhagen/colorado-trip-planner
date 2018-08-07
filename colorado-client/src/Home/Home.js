@@ -6,6 +6,7 @@ import Auth from '../Auth/Auth'
 
 const auth = new Auth();
 
+
 class Home extends Component {
   login() {
     this.props.auth.login();
