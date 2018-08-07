@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TripsContainer from '../TripsContainer';
+import Map from '../googleMaps/map'
 
 class Home extends Component {
   login() {
@@ -11,10 +12,12 @@ class Home extends Component {
       <div className="container">
         {
           isAuthenticated() && (
-              <h4>
+              <div className="">
                 You are logged in!
                 <TripsContainer />
-              </h4>
+
+                    <Map />
+              </div>
             )
         }
         {
