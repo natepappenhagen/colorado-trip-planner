@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import TripsContainer from '../TripsContainer';
 import Map from '../googleMaps/map'
 import SearchBar from '../googleMaps/SearchBar'
+import Auth from '../Auth/Auth'
+
+const auth = new Auth();
 
 class Home extends Component {
   login() {
@@ -17,9 +20,18 @@ class Home extends Component {
                 You are logged in!
                 <TripsContainer />
 
+                <div>
+              {auth.getProfile().given_name}
+              <hr/>
+              {auth.getProfile().nickname}
+              <hr/>
+                </div>
                     <SearchBar />
 
                     <Map />
+              }
+              }
+              }
               </div>
             )
         }

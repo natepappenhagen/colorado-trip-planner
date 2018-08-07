@@ -1,6 +1,7 @@
 import history from '../history';
 import auth0 from 'auth0-js';
 import { AUTH_CONFIG } from './auth0-variables';
+import jwtDecode from 'jwt-decode';
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
@@ -9,7 +10,7 @@ export default class Auth {
     redirectUri: AUTH_CONFIG.callbackUrl,
     audience: `https://${AUTH_CONFIG.domain}/userinfo`,
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
   constructor() {
@@ -61,4 +62,14 @@ export default class Auth {
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
+
+getProfile() {
+  if (localStorage.getItem("id_token")) {
+    return jwtDecode(localStorage.getItem("id_token"));
+  } else {
+    return {};
+  }
+}
+
+
 }
