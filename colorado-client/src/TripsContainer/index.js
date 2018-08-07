@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import Trips from '../Trips';
 import CreateTrip from '../CreateTrip';
 import EditTrip from '../EditTrip';
+import Auth from '../Auth/Auth'
 
+const auth = new Auth();
+{auth.getProfile().given_name}
 
 class TripContainer extends Component {
   constructor(){
@@ -25,13 +28,34 @@ class TripContainer extends Component {
       console.log(err);
     })
   }
-  getTrips = async () => {
+
+
+///////////////////    WORKING BUT WRONG    ///////////////////////////////
+    getTrips = async () => {
 
     const trips = await fetch('http://localhost:9000/api/v1/trips');
     const tripsJson = await trips.json();
     return tripsJson
 
   }
+/////////////////////    NOT WORKING BUT RIGHT //////////////////////////////
+  //   getTrips = async () => {
+
+  //   const given = auth.getProfile().given_name
+  //   const trips = await fetch('http://localhost:9000/api/v1/trips');
+
+  //   const tripsJson = await trips.json();
+
+  //   const userTrips = await trips.data.map((trip) => {
+  //     if(trip.userGivenName === given) {
+  //       return trip
+  //     }
+  //   })
+  //   return userTrips
+
+  // }
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
   addTrip = async (trip, e) => {
     e.preventDefault();
     try {

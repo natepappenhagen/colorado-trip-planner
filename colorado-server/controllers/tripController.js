@@ -9,6 +9,9 @@ const Trip = require('../models/trip');
 // index route should show all the fruits
  router.get('/', async (req, res, next) => {
 
+    console.log(req.body, ' this is req.body');
+
+
      try  {
 
       const allTrips = await Trip.find();
