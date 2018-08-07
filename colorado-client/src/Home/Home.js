@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TripsContainer from '../TripsContainer';
 import Map from '../googleMaps/map'
+import SearchBar from '../googleMaps/SearchBar'
 
 class Home extends Component {
   login() {
@@ -15,6 +16,8 @@ class Home extends Component {
               <div className="">
                 You are logged in!
                 <TripsContainer />
+
+                    <SearchBar />
 
                     <Map />
               </div>
